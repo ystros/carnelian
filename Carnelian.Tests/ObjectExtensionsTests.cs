@@ -64,5 +64,24 @@ namespace Carnelian.Tests
                 Assert.IsTrue(value.IsPresent());
             }
         }
+
+        [TestFixture]
+        public class TapMethod
+        {
+            [Test]
+            public void it_calls_the_specified_block()
+            {
+                string blockValue = null;
+                "hello world".Tap(x => blockValue = x);
+                Assert.AreEqual("hello world", blockValue);
+            }
+
+            [Test]
+            public void it_returns_the_original_object()
+            {
+                string value = "hello world";
+                Assert.AreSame(value, value.Tap(x => {}));
+            }
+        }
     }
 }

@@ -18,5 +18,11 @@ namespace Carnelian
         {
             return value != null;
         }
+
+        public static TValue Tap<TValue>(this TValue value, Action<TValue> block)
+        {
+            block(value);
+            return value;
+        }
     }
 }
