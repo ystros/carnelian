@@ -59,6 +59,20 @@ namespace Carnelian.Tests
                 string value = "";
                 Assert.IsFalse(value.IsNull());
             }
+
+            [Test]
+            public void it_returns_true_if_null_with_nullable_types()
+            {
+                int? value = null;
+                Assert.IsTrue(value.IsNull());
+            }
+
+            [Test]
+            public void it_returns_false_if_not_null_with_nullable_types()
+            {
+                int? value = 123;
+                Assert.IsFalse(value.IsNull());
+            }
         }
 
         [TestFixture]
@@ -75,6 +89,20 @@ namespace Carnelian.Tests
             public void it_returns_true_if_not_null()
             {
                 string value = "";
+                Assert.IsTrue(value.IsPresent());
+            }
+
+            [Test]
+            public void it_returns_false_if_null_with_nullable_types()
+            {
+                int? value = null;
+                Assert.IsFalse(value.IsPresent());
+            }
+
+            [Test]
+            public void it_returns_true_if_not_null_with_nullable_types()
+            {
+                int? value = 123;
                 Assert.IsTrue(value.IsPresent());
             }
         }

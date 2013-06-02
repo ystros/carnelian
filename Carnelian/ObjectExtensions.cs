@@ -19,9 +19,19 @@ namespace Carnelian
             return value == null;
         }
 
+        public static bool IsNull<TValue>(this TValue? value) where TValue : struct
+        {
+            return !value.HasValue;
+        }
+
         public static bool IsPresent<TValue>(this TValue value) where TValue : class
         {
             return value != null;
+        }
+
+        public static bool IsPresent<TValue>(this TValue? value) where TValue : struct
+        {
+            return value.HasValue;
         }
 
         public static TValue Tap<TValue>(this TValue value, Action<TValue> block)
