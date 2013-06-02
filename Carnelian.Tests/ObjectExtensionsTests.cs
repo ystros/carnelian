@@ -27,6 +27,20 @@ namespace Carnelian.Tests
                 string value = null;
                 Assert.AreEqual(0, value.Try(x => x.Length));
             }
+
+            [Test]
+            public void it_returns_null_with_nullable_values()
+            {
+                int? value = null;
+                Assert.AreEqual(null, value.Try(x => x.ToString()));
+            }
+
+            [Test]
+            public void it_calls_through_for_nullable_values()
+            {
+                int? value = 123;
+                Assert.AreEqual("123", value.Try(x => x.ToString()));
+            }
         }
 
         [TestFixture]

@@ -9,6 +9,11 @@ namespace Carnelian
             return value == null ? default(TResult) : method(value);
         }
 
+        public static TResult Try<TValue, TResult>(this TValue? value, Func<TValue, TResult> method) where TValue : struct
+        {
+            return value.HasValue ? method(value.Value) : default(TResult);
+        }
+
         public static bool IsNull<TValue>(this TValue value) where TValue : class
         {
             return value == null;
